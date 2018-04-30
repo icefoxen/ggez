@@ -54,7 +54,7 @@ impl event::EventHandler for MainState {
                 // 2 fps debug, 81 fps release
                 //graphics::draw(ctx, &self.text_raw, dest, 0.0)?;
 
-                // 30 fps debug, 9200 fps release
+                // 30 fps debug, 884 fps release
                 self.text_cached.queue(ctx, dest);
             }
         }
