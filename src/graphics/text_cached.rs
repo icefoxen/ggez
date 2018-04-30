@@ -30,11 +30,11 @@ impl TextCached {
     }
 
     /// Queues text for drawing.
-    pub fn queue(&self, ctx: &mut Context) {
+    pub fn queue(&self, ctx: &mut Context, dest: Point2) {
         let (font_id, font_scale) = (self.font_id, self.font_scale);
         ctx.gfx_context.glyph_brush.queue(Section {
             text: &self.contents,
-            //screen_position: (dest.x, dest.y),
+            screen_position: (dest.x, dest.y),
             //bounds: (f32, f32),
             scale: font_scale,
             color: WHITE.into(),
