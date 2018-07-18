@@ -31,30 +31,18 @@
 #![warn(bare_trait_objects)]
 #![warn(missing_copy_implementations)]
 
+#![feature(rust_2018_preview)]
+
 #[macro_use]
 extern crate bitflags;
-extern crate app_dirs2;
 #[macro_use]
 extern crate gfx;
-extern crate gfx_device_gl;
-extern crate gfx_glyph;
-extern crate gfx_window_glutin;
-extern crate glutin;
-extern crate image;
 #[macro_use]
 extern crate log;
-extern crate lyon;
-extern crate mint;
-pub extern crate nalgebra;
-extern crate rodio;
 #[macro_use]
 extern crate serde_derive;
 #[macro_use]
 extern crate smart_default;
-extern crate gilrs;
-extern crate toml;
-extern crate winit;
-extern crate zip;
 
 pub mod audio;
 pub mod conf;
@@ -67,5 +55,5 @@ pub mod input;
 pub mod timer;
 mod vfs;
 
-pub use context::{Context, ContextBuilder};
-pub use error::*;
+pub use crate::context::{Context, ContextBuilder};
+pub use crate::error::*;

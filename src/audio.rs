@@ -13,10 +13,10 @@ use std::sync::Arc;
 
 use rodio;
 
-use context::Context;
-use filesystem;
-use GameError;
-use GameResult;
+use crate::context::Context;
+use crate::filesystem;
+use crate::GameError;
+use crate::GameResult;
 
 /// A struct that contains all information for tracking sound info.
 ///

@@ -75,8 +75,8 @@ impl TextFragment {
     }
 }
 
-impl<'a> From<&'a str> for TextFragment {
-    fn from(text: &'a str) -> TextFragment {
+impl From<&str> for TextFragment {
+    fn from(text: &str) -> TextFragment {
         TextFragment {
             text: text.to_owned(),
             ..Default::default()
@@ -236,7 +236,7 @@ impl Text {
     }
 
     /// Converts `Text` to a type `gfx_glyph` can understand and queue.
-    fn generate_varied_section<'a>(
+    fn generate_varied_section(
         &'a self,
         relative_dest: Point2,
         color: Option<Color>,
@@ -405,7 +405,7 @@ impl Font {
     where
         P: AsRef<path::Path> + fmt::Debug,
     {
-        use filesystem;
+        use crate::filesystem;
         let mut stream = filesystem::open(context, path.as_ref())?;
         let mut buf = Vec::new();
         let _ = stream.read_to_end(&mut buf)?;
@@ -459,7 +459,7 @@ where
 
 /// Exposes `gfx_glyph`'s `GlyphBrush::queue()` and `GlyphBrush::queue_custom_layout()`,
 /// in case `ggez`' API is insufficient.
-pub fn queue_text_raw<'a, S, G>(context: &mut Context, section: S, custom_layout: Option<&G>)
+pub fn queue_text_raw<S, G>(context: &mut Context, section: S, custom_layout: Option<&G>)
 where
     S: Into<Cow<'a, VariedSection<'a>>>,
     G: GlyphPositioner,

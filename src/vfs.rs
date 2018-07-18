@@ -18,7 +18,7 @@ use std::path::{self, Path, PathBuf};
 
 use zip;
 
-use {GameError, GameResult};
+use crate::{GameError, GameResult};
 
 fn convenient_path_to_str(path: &path::Path) -> GameResult<&str> {
     path.to_str().ok_or_else(|| {

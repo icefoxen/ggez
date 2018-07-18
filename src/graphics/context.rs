@@ -7,11 +7,11 @@ use gfx_glyph::{GlyphBrush, GlyphBrushBuilder};
 use glutin;
 use winit::{self, dpi};
 
-use conf::{FullscreenType, WindowMode, WindowSetup};
-use context::DebugId;
-use graphics::*;
+use crate::conf::{FullscreenType, WindowMode, WindowSetup};
+use crate::context::DebugId;
+use crate::graphics::*;
 
-use GameResult;
+use crate::GameResult;
 
 /// A structure that contains graphics state.
 /// For instance,

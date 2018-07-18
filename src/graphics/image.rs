@@ -4,12 +4,12 @@ use std::path;
 use gfx;
 use image;
 
-use context::{Context, DebugId};
-use filesystem;
-use graphics::shader::*;
-use graphics::*;
-use GameError;
-use GameResult;
+use crate::context::{Context, DebugId};
+use crate::filesystem;
+use crate::graphics::shader::*;
+use crate::graphics::*;
+use crate::GameError;
+use crate::GameResult;
 
 /// Generic in-GPU-memory image data available to be drawn on the screen.
 #[derive(Clone)]

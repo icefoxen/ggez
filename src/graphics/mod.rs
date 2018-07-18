@@ -18,12 +18,12 @@ use gfx::Factory;
 use gfx_device_gl;
 use glutin::{self, GlContext};
 
-use conf;
-use conf::WindowMode;
-use context::Context;
-use context::DebugId;
-use GameError;
-use GameResult;
+use crate::conf;
+use crate::conf::WindowMode;
+use crate::context::Context;
+use crate::context::DebugId;
+use crate::GameError;
+use crate::GameResult;
 
 mod canvas;
 mod context;
@@ -86,7 +86,7 @@ pub trait BackendSpec: fmt::Debug {
     fn get_info(&self, device: &Self::Device) -> String;
 
     /// Creates the window.
-    fn init<'a>(
+    fn init(
         &self,
         window_builder: glutin::WindowBuilder,
         gl_builder: glutin::ContextBuilder<'a>,
@@ -156,7 +156,7 @@ impl BackendSpec for GlBackendSpec {
         (self.major, self.minor)
     }
 
-    fn init<'a>(
+    fn init(
         &self,
         window_builder: glutin::WindowBuilder,
         gl_builder: glutin::ContextBuilder<'a>,

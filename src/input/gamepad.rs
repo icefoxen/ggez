@@ -8,8 +8,8 @@ use std::fmt;
 
 use gilrs::{Gamepad, Gilrs};
 
-use context::Context;
-use GameResult;
+use crate::context::Context;
+use crate::GameResult;
 
 /// A structure that contains gamepad state.
 pub struct GamepadContext {

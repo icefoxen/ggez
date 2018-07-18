@@ -13,7 +13,7 @@
 use std::io;
 use toml;
 
-use GameResult;
+use crate::GameResult;
 
 /// Possible fullscreen modes.
 #[derive(Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Eq)]

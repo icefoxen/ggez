@@ -1,6 +1,6 @@
-use context::DebugId;
+use crate::context::DebugId;
 use gfx::traits::FactoryExt;
-use graphics::*;
+use crate::graphics::*;
 use lyon;
 use lyon::tessellation as t;
 

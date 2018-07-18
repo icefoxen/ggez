@@ -64,7 +64,7 @@
 //! }
 //! ```
 
-use context::Context;
+use crate::context::Context;
 
 use winit::ModifiersState;
 /// A key code.

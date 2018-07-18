@@ -32,11 +32,11 @@ use std::path;
 
 use app_dirs2::*;
 
-use conf;
-use vfs::{self, VFS};
-use {Context, GameError, GameResult};
+use crate::conf;
+use crate::vfs::{self, VFS};
+use crate::{Context, GameError, GameResult};
 
-pub use vfs::OpenOptions;
+pub use crate::vfs::OpenOptions;
 
 const CONFIG_NAME: &str = "/conf.toml";
 

@@ -1,13 +1,13 @@
 //! Mouse utility functions.
 
-use context::Context;
-use graphics;
-use graphics::Point2;
+use crate::context::Context;
+use crate::graphics;
+use crate::graphics::Point2;
 use std::collections::HashMap;
 use winit::dpi;
 pub use winit::{MouseButton, MouseCursor};
-use GameError;
-use GameResult;
+use crate::GameError;
+use crate::GameResult;
 
 /// Stores state information for the mouse,
 /// what little of it there is.

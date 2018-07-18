@@ -9,12 +9,12 @@
 
 use super::shader::BlendMode;
 use super::types::FilterMode;
-use context::Context;
-use error;
+use crate::context::Context;
+use crate::error;
 use gfx;
 use gfx::Factory;
-use graphics::{self, BackendSpec, DrawTransform};
-use GameResult;
+use crate::graphics::{self, BackendSpec, DrawTransform};
+use crate::GameResult;
 
 /// A `SpriteBatch` draws a number of copies of the same image, using a single draw call.
 ///

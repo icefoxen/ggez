@@ -3,14 +3,14 @@ use winit::dpi;
 
 use std::fmt;
 
-use audio;
-use conf;
-use event::winit_event;
-use filesystem::Filesystem;
-use graphics::{self, Point2};
-use input::{gamepad, keyboard, mouse};
-use timer;
-use GameResult;
+use crate::audio;
+use crate::conf;
+use crate::event::winit_event;
+use crate::filesystem::Filesystem;
+use crate::graphics::{self, Point2};
+use crate::input::{gamepad, keyboard, mouse};
+use crate::timer;
+use crate::GameResult;
 
 /// A `Context` is an object that holds on to global resources.
 /// It basically tracks hardware state such as the screen, audio
