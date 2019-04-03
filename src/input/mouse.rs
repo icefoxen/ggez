@@ -106,7 +106,7 @@ where
     let mintpoint = point.into();
     ctx.mouse_context.last_position = Point2::from(mintpoint);
     graphics::window(ctx)
-        .set_cursor_position(dpi::LogicalPosition {
+        .set_cursor_position(dpi::PhysicalPosition {
             x: f64::from(mintpoint.x),
             y: f64::from(mintpoint.y),
         })

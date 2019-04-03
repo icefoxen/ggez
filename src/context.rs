@@ -121,7 +121,7 @@ impl Context {
                     self.gfx_context.resize_viewport();
                 }
                 winit_event::WindowEvent::CursorMoved {
-                    position: dpi::LogicalPosition { x, y },
+                    position: dpi::PhysicalPosition { x, y },
                     ..
                 } => {
                     self.mouse_context

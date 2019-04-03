@@ -156,7 +156,7 @@ where
             let event = ctx.process_event(&event);
             match event {
                 Event::WindowEvent { event, .. } => match event {
-                    WindowEvent::Resized(dpi::LogicalSize { width, height }) => {
+                    WindowEvent::Resized(dpi::PhysicalSize { width, height }) => {
                         state.resize_event(ctx, width as f32, height as f32);
                     }
                     WindowEvent::CloseRequested => {
@@ -198,7 +198,7 @@ where
                     WindowEvent::MouseWheel { delta, .. } => {
                         let (x, y) = match delta {
                             MouseScrollDelta::LineDelta(x, y) => (x, y),
-                            MouseScrollDelta::PixelDelta(dpi::LogicalPosition { x, y }) => {
+                            MouseScrollDelta::PixelDelta(dpi::PhysicalPosition { x, y }) => {
                                 (x as f32, y as f32)
                             }
                         };

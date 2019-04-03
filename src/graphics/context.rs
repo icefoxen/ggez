@@ -149,13 +149,13 @@ impl GraphicsContextGeneric<GlBackendSpec> {
         // TODO: see winit #548 about DPI.
         {
             // Log a bunch of OpenGL state info pulled out of winit and gfx
-            let dpi::LogicalSize {
+            let dpi::PhysicalSize {
                 width: w,
                 height: h,
             } = window
                 .get_outer_size()
                 .ok_or_else(|| GameError::VideoError("Window doesn't exist!".to_owned()))?;
-            let dpi::LogicalSize {
+            let dpi::PhysicalSize {
                 width: dw,
                 height: dh,
             } = window
@@ -529,7 +529,7 @@ where
 
         // TODO: find out if single-dimension constraints are possible.
         let min_dimensions = if mode.min_width > 0.0 && mode.min_height > 0.0 {
-            Some(dpi::LogicalSize {
+            Some(dpi::PhysicalSize {
                 width: mode.min_width.into(),
                 height: mode.min_height.into(),
             })
@@ -539,7 +539,7 @@ where
         window.set_min_dimensions(min_dimensions);
 
         let max_dimensions = if mode.max_width > 0.0 && mode.max_height > 0.0 {
-            Some(dpi::LogicalSize {
+            Some(dpi::PhysicalSize {
                 width: mode.max_width.into(),
                 height: mode.max_height.into(),
             })
@@ -553,14 +553,14 @@ where
             FullscreenType::Windowed => {
                 window.set_fullscreen(None);
                 window.set_decorations(!mode.borderless);
-                window.set_inner_size(dpi::LogicalSize {
+                window.set_inner_size(dpi::PhysicalSize {
                     width: mode.width.into(),
                     height: mode.height.into(),
                 });
             }
             FullscreenType::True => {
                 window.set_fullscreen(Some(monitor));
-                window.set_inner_size(dpi::LogicalSize {
+                window.set_inner_size(dpi::PhysicalSize {
                     width: mode.width.into(),
                     height: mode.height.into(),
                 });
@@ -572,8 +572,8 @@ where
                 self.hidpi_factor = hidpi_factor as f32;
                 window.set_fullscreen(None);
                 window.set_decorations(false);
-                window.set_inner_size(dimensions.to_logical(hidpi_factor));
-                window.set_position(position.to_logical(hidpi_factor));
+                window.set_inner_size(dimensions);
+                window.set_position(position);
             }
         }
         Ok(())
@@ -638,7 +638,7 @@ where
     // /// and turns it into the equivalent in PhysicalScale, allowing us to
     // /// override the DPI if necessary.
     // pub(crate) fn to_physical_dpi(&self, x: f32, y: f32) -> (f32, f32) {
-    //     let logical = dpi::LogicalPosition::new(f64::from(x), f64::from(y));
+    //     let logical = dpi::PhysicalPosition::new(f64::from(x), f64::from(y));
     //     let physical = dpi::PhysicalPosition::from_logical(logical, self.hidpi_factor.into());
     //     (physical.x as f32, physical.y as f32)
     // }
