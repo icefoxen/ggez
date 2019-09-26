@@ -102,7 +102,7 @@ extern crate smart_default;
 pub extern crate mint;
 pub extern crate nalgebra;
 
-pub mod audio;
+//pub mod audio;
 pub mod conf;
 mod context;
 pub mod error;

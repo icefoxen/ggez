@@ -12,7 +12,6 @@ use winit;
 use gilrs;
 use image;
 use lyon;
-use rodio::decoder::DecoderError;
 use toml;
 use zip;
 
@@ -107,13 +106,6 @@ impl From<zip::result::ZipError> for GameError {
     fn from(e: zip::result::ZipError) -> GameError {
         let errstr = format!("Zip error: {}", e.description());
         GameError::ResourceLoadError(errstr)
-    }
-}
-
-impl From<DecoderError> for GameError {
-    fn from(e: DecoderError) -> GameError {
-        let errstr = format!("Audio decoder error: {:?}", e);
-        GameError::AudioError(errstr)
     }
 }
 

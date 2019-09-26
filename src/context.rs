@@ -3,7 +3,6 @@ use std::fmt;
 /// without having to mess around figuring it out.
 pub use winit;
 
-use crate::audio;
 use crate::conf;
 use crate::error::GameResult;
 use crate::event::winit_event;
@@ -42,8 +41,6 @@ pub struct Context {
     pub(crate) gfx_context: crate::graphics::context::GraphicsContext,
     /// Timer state
     pub timer_context: timer::TimeContext,
-    /// Audio context
-    pub audio_context: Box<dyn audio::AudioContext>,
     /// Keyboard context
     pub keyboard_context: keyboard::KeyboardContext,
     /// Mouse context
@@ -77,11 +74,6 @@ impl Context {
     /// Usually called by [`ContextBuilder::build()`](struct.ContextBuilder.html#method.build).
     fn from_conf(conf: conf::Conf, mut fs: Filesystem) -> GameResult<(Context, winit::EventsLoop)> {
         let debug_id = DebugId::new();
-        let audio_context: Box<dyn audio::AudioContext> = if conf.modules.audio {
-            Box::new(audio::RodioAudioContext::new()?)
-        } else {
-            Box::new(audio::NullAudioContext::default())
-        };
         let events_loop = winit::EventsLoop::new();
         let timer_context = timer::TimeContext::new();
         let backend_spec = graphics::GlBackendSpec::from(conf.backend);
@@ -107,7 +99,6 @@ impl Context {
             gfx_context: graphics_context,
             continuing: true,
             timer_context,
-            audio_context,
             keyboard_context,
             gamepad_context,
             mouse_context,
